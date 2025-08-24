@@ -1,5 +1,3 @@
-// src\models\User.ts
-
 import { DataTypes, Model } from "@sequelize/core";
 import sequelize from "../config/database.js";
 
@@ -7,10 +5,15 @@ class User extends Model {
   declare id: number;
   declare email: string;
   declare password: string;
+  declare fullName: string;
 }
 
 User.init(
   {
+    fullName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
