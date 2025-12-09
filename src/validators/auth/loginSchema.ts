@@ -8,3 +8,10 @@ export const loginSchema = z.object({
     .string()
     .min(6, { message: "رمز عبور باید حداقل ۶ کاراکتر باشد" }),
 });
+
+export const loginSchemaWithName = z.object({
+  username: z.string().min(6, { message: "نام کاربری باید حداقل ۶ حرف باشد" }),
+  password: z
+    .string()
+    .min(6, { message: "رمز عبور باید حداقل ۶ کاراکتر باشد" }),
+});

@@ -5,12 +5,12 @@ class User extends Model {
   declare id: number;
   declare email: string;
   declare password: string;
-  declare fullName: string;
+  declare username: string;
 }
 
 User.init(
   {
-    fullName: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
     },
