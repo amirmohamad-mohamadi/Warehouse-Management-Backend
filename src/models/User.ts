@@ -6,10 +6,17 @@ class User extends Model {
   declare email: string;
   declare password: string;
   declare username: string;
+  declare resetToken: string | null;
+  declare resetTokenExpiry: Date | null;
 }
 
 User.init(
   {
+    id: {
+      type: DataTypes.INTEGER.UNSIGNED,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -23,12 +30,21 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    // 🆕 فیلدهای مربوط به forgot-password
+    resetToken: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    resetTokenExpiry: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
   },
   {
     sequelize,
     modelName: "User",
     tableName: "users",
-    timestamps: false,
+    timestamps: false, // یا true اگر بخوای createdAt/updatedAt داشته باشی
   }
 );
 

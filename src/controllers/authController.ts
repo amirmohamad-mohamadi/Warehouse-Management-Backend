@@ -1,8 +1,11 @@
 // src/controllers/authController.ts
 import { compare, hash } from "bcrypt";
 import jwt from "jsonwebtoken";
+import crypto from "crypto";
 import User from "@models/User.js";
 import config from "@config/config.js";
+import { sendResetEmail } from "@utils/mailer.js";
+import { Op } from "@sequelize/core";
 
 class AuthController {
   // 🔹 تابع کمکی برای تولید توکن‌ها
@@ -80,7 +83,6 @@ class AuthController {
       throw new Error("رمز عبور و تکرار آن یکسان نیستند");
     }
 
-    // بررسی تکراری بودن ایمیل یا username
     if (await User.findOne({ where: { email: body.email } })) {
       throw new Error("ایمیل قبلاً ثبت شده");
     }
@@ -107,6 +109,59 @@ class AuthController {
         email: user.email,
         username: user.username,
       },
+    };
+  }
+
+  // 🔹 forgotPassword
+  static async forgotPassword(body: { email: string }) {
+    const user = await User.findOne({ where: { email: body.email } });
+    if (!user) throw new Error("کاربری با این ایمیل یافت نشد");
+    // ساخت توکن ریست
+    const resetToken = crypto.randomBytes(32).toString("hex");
+    const hashedToken = crypto
+      .createHash("sha256")
+      .update(resetToken)
+      .digest("hex");
+    const expiry = new Date(Date.now() + 1000 * 60 * 15); // اعتبار 15 دقیقه
+
+    user.resetToken = hashedToken;
+    user.resetTokenExpiry = expiry;
+    await user.save();
+
+    // ارسال ایمیل با لینک
+    await sendResetEmail(user.email, resetToken);
+
+    return {
+      message: "لینک تغییر رمز ارسال شد",
+    };
+  }
+
+  static async resetPassword(body: { token: string; password: string }) {
+    const hashedToken = crypto
+      .createHash("sha256")
+      .update(body.token)
+      .digest("hex");
+
+    // پیدا کردن کاربر با توکن معتبر
+    const user = await User.findOne({
+      where: {
+        resetToken: hashedToken,
+        resetTokenExpiry: { [Op.gt]: new Date() }, // اعتبار هنوز تمام نشده
+      },
+    });
+
+    if (!user) throw new Error("توکن نامعتبر یا منقضی شده است");
+
+    // هش کردن رمز جدید
+    const hashedPassword = await hash(body.password, 10);
+
+    user.password = hashedPassword;
+    user.resetToken = null;
+    user.resetTokenExpiry = null;
+    await user.save();
+
+    return {
+      message: "رمز عبور با موفقیت تغییر کرد",
     };
   }
 }

@@ -10,7 +10,6 @@ export const loginHandler = async (req: Request, res: Response) => {
     setAuthCookie(res, accessToken);
     res.status(200).json({ success: true, data: { user, refreshToken } });
   } catch (error) {
-    console.error("Login error:", error);
     res.status(401).json({
       success: false,
       message: (error as Error).message || "ورود ناموفق بود",

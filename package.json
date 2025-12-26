@@ -14,10 +14,12 @@
   "dependencies": {
     "@sequelize/core": "^7.0.0-alpha.46",
     "@sequelize/mysql": "^7.0.0-alpha.46",
+    "axios": "^1.13.2",
     "bcrypt": "^6.0.0",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^7.0.11",
     "zod": "^4.0.17"
   },
   "devDependencies": {
@@ -25,6 +27,7 @@
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.1.0",
+    "@types/nodemailer": "^7.0.4",
     "tsx": "^4.20.3",
     "typescript": "^5.9.2"
   }
