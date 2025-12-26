@@ -28,7 +28,6 @@ export const loginHandlerWithUserName = async (req: Request, res: Response) => {
     // پاسخ موفق
     res.status(200).json({ success: true, data: { user, refreshToken } });
   } catch (error) {
-    console.error("Login error:", error);
     res.status(401).json({
       success: false,
       message: (error as Error).message || "ورود ناموفق بود",
