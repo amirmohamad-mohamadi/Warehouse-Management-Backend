@@ -42,6 +42,10 @@ type AppConfig = {
     clientSecret: string;
     refreshToken: string;
   };
+  google: {
+    clientId: string;
+    clientSecret: string;
+  };
 };
 
 // 📌 اعتبارسنجی متغیرهای محیطی با Zod
@@ -54,6 +58,9 @@ const envSchema = z.object({
   GMAIL_CLIENT_ID: z.string().min(10),
   GMAIL_CLIENT_SECRET: z.string().min(10),
   GMAIL_REFRESH_TOKEN: z.string().min(10),
+
+  GOOGLE_CLIENT_ID: z.string().min(10),
+  GOOGLE_CLIENT_SECRET: z.string().min(10),
 });
 
 const parsedEnv = envSchema.parse(process.env);
@@ -86,6 +93,10 @@ const config = {
     clientId: parsedEnv.GMAIL_CLIENT_ID,
     clientSecret: parsedEnv.GMAIL_CLIENT_SECRET,
     refreshToken: parsedEnv.GMAIL_REFRESH_TOKEN,
+  },
+  google: {
+    clientId: parsedEnv.GOOGLE_CLIENT_ID,
+    clientSecret: parsedEnv.GOOGLE_CLIENT_SECRET,
   },
 } satisfies AppConfig;
 
