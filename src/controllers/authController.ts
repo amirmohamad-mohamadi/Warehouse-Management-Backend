@@ -1,4 +1,3 @@
-// src/controllers/authController.ts
 import { compare, hash } from "bcrypt";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";

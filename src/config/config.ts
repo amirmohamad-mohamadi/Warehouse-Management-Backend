@@ -1,5 +1,3 @@
-// src/config/config.ts
-
 import { z } from "zod";
 import { resolveEnv } from "@utils/resolveEnv.js";
 
@@ -12,7 +10,7 @@ if (
   !process.env.DB_PORT
 ) {
   console.error(
-    "❌ تنظیمات دیتابیس ناقص است. لطفاً فایل .env مناسب را بررسی کنید."
+    "❌ تنظیمات دیتابیس ناقص است. لطفاً فایل .env مناسب را بررسی کنید.",
   );
   process.exit(1);
 }
