@@ -1,7 +1,6 @@
 import { z } from "zod";
 import { resolveEnv } from "@utils/resolveEnv.js";
 
-// ✅ بررسی اولیه برای تنظیمات دیتابیس
 if (
   !process.env.DB_HOST ||
   !process.env.DB_USER ||
@@ -15,7 +14,6 @@ if (
   process.exit(1);
 }
 
-// 📌 تعریف نوع کلی تنظیمات اپلیکیشن
 type AppConfig = {
   env: "development" | "production" | "test";
   db: {
@@ -46,7 +44,6 @@ type AppConfig = {
   };
 };
 
-// 📌 اعتبارسنجی متغیرهای محیطی با Zod
 const envSchema = z.object({
   JWT_EXPIRES_IN: z.enum(["1h", "1d", "7d", "30m"]).default("1d"),
   JWT_REFRESH_EXPIRES_IN: z.enum(["1h", "1d", "7d", "30m"]).default("7d"),
@@ -63,7 +60,6 @@ const envSchema = z.object({
 
 const parsedEnv = envSchema.parse(process.env);
 
-// 📌 ساختن آبجکت config نهایی
 const config = {
   env: resolveEnv(process.env.NODE_ENV),
 
