@@ -1,13 +1,10 @@
-import {
-  loginSchema,
-  loginSchemaWithName,
-} from "@validators/auth/loginSchema.js";
+import { loginSchema, loginSchemaWithName } from "@validators/auth/loginSchema";
 import type { Request, Response, NextFunction } from "express";
 
 export const validateLoginWithNameRequest = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const result = loginSchemaWithName.safeParse(req.body);
 

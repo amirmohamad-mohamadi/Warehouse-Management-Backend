@@ -1,30 +1,30 @@
 import type { NextFunction, Request, Response } from "express";
-import type { ResponseWithMethods } from "../types/globalTypes.js";
+import type { ResponseWithMethods } from "../types/globalTypes";
 
 // TODO: Simple response logger — can be extended to write to file or database
 function logResponse(
   req: Request,
   status: number,
   success: boolean,
-  message: string
+  message: string,
 ) {
   console.log(
     `[${new Date().toISOString()}] ${req.method} ${
       req.originalUrl
-    } → ${status} ${success ? "✅" : "❌"} ${message}`
+    } → ${status} ${success ? "✅" : "❌"} ${message}`,
   );
 }
 
 export default function responseMiddleware(
   req: Request,
   res: ResponseWithMethods,
-  next: NextFunction
+  next: NextFunction,
 ): void {
   if (!res.success) {
     res.success = (
       message: string = "",
       body: any = null,
-      status: number = 200
+      status: number = 200,
     ): Response => {
       logResponse(req, status, true, message);
       return res.status(status).json({
@@ -40,7 +40,7 @@ export default function responseMiddleware(
     res.fail = (
       message: string = "",
       status: number = 400,
-      body: any = null
+      body: any = null,
     ): Response => {
       logResponse(req, status, false, message);
       return res.status(status).json({

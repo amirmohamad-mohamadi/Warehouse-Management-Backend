@@ -1,6 +1,6 @@
 import { Sequelize } from "@sequelize/core";
 import { MySqlDialect } from "@sequelize/mysql";
-import config from "./config.js";
+import config from "./config";
 
 const sequelize = new Sequelize({
   dialect: MySqlDialect,

@@ -1,4 +1,4 @@
-import AuthController from "@controllers/authController.js";
+import AuthController from "@controllers/authController";
 import { type Request, type Response } from "express";
 
 export const forgotPasswordHandler = async (req: Request, res: Response) => {

@@ -1,4 +1,4 @@
-import type { EnvType } from "../types/globalTypes.js";
+import type { EnvType } from "../types/globalTypes";
 
 export function resolveEnv(env: string | undefined): EnvType {
   switch (env) {

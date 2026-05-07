@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { resolveEnv } from "@utils/resolveEnv.js";
+import { resolveEnv } from "@utils/resolveEnv";
 
 if (
   !process.env.DB_HOST ||

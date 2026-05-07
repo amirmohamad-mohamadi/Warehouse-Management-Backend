@@ -1,12 +1,12 @@
 import { type Request, type Response } from "express";
 
-import AuthController from "@controllers/authController.js";
-import { setAuthCookie } from "@utils/cookies.js";
+import AuthController from "@controllers/authController";
+import { setAuthCookie } from "@utils/cookies";
 
 export const signupHandler = async (req: Request, res: Response) => {
   try {
     const { user, accessToken, refreshToken } = await AuthController.signup(
-      req.body
+      req.body,
     );
     setAuthCookie(res, accessToken);
 

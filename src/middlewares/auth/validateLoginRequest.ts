@@ -1,10 +1,10 @@
-import { loginSchema } from "@validators/auth/loginSchema.js";
+import { loginSchema } from "@validators/auth/loginSchema";
 import type { Request, Response, NextFunction } from "express";
 
 export const validateLoginRequest = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const result = loginSchema.safeParse(req.body);
 

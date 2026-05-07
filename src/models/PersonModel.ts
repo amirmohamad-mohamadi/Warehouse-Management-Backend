@@ -1,6 +1,6 @@
-import sequelize from "@config/database.js";
+import sequelize from "@config/database";
 import { DataTypes, Model } from "@sequelize/core";
-import { enToFa } from "@utils/globalFunctions.js";
+import { enToFa } from "@utils/globalFunctions";
 
 class Person extends Model {
   declare fullname: string;

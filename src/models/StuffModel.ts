@@ -1,8 +1,11 @@
-import sequelize from "@config/database.js";
+import sequelize from "@config/database";
 import { DataTypes, Model } from "@sequelize/core";
-import { enToFa, formatPrice } from "@utils/globalFunctions.js";
+import { enToFa, formatPrice } from "@utils/globalFunctions";
 
-class Stuff extends Model {}
+class Stuff extends Model {
+  declare title: string;
+  declare buyPrice: number;
+}
 
 Stuff.init(
   {

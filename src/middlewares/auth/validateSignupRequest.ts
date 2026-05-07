@@ -1,10 +1,10 @@
-import { signupSchema } from "@validators/auth/SignupSchema.js";
+import { signupSchema } from "@validators/auth/SignupSchema";
 import type { Request, Response, NextFunction } from "express";
 
 export const validateSignupRequest = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const result = signupSchema.safeParse(req.body);
 

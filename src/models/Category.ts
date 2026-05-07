@@ -1,7 +1,7 @@
 import { DataTypes, Model } from "@sequelize/core";
-import sequelize from "@config/database.js";
-import { slugify } from "@utils/helperFunction.js";
-import { enToFa } from "@utils/globalFunctions.js";
+import sequelize from "@config/database";
+import { slugify } from "@utils/helperFunction";
+import { enToFa } from "@utils/globalFunctions";
 
 class Category extends Model {
   declare title: string;

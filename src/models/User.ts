@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "@sequelize/core";
-import sequelize from "../config/database.js";
+import sequelize from "../config/database";
 
 class User extends Model {
   declare id: number;
@@ -45,7 +45,7 @@ User.init(
     modelName: "User",
     tableName: "users",
     timestamps: false, // یا true اگر بخوای createdAt/updatedAt داشته باشی
-  }
+  },
 );
 
 export default User;

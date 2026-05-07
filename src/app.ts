@@ -4,10 +4,11 @@ import express, {
   type Request,
   type Response,
 } from "express";
-import responseMiddleware from "./middlewares/responseMiddleware.js";
-import corsMiddleware from "./middlewares/corsMiddleware.js";
-import sequelize from "./config/database.js";
-import router from "@routes/routes.js";
+import responseMiddleware from "./middlewares/responseMiddleware";
+import corsMiddleware from "./middlewares/corsMiddleware";
+import sequelize from "./config/database";
+import router from "@routes/routes";
+import "./models";
 
 const app = express();
 
@@ -23,7 +24,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use("/api/v1/wms", router);
 
 (async () => {
-  await sequelize.sync();
+  await sequelize.sync({ force: true });
   app.listen(3000, () => {
     console.log("Server is running on http://localhost:3000");
   });
