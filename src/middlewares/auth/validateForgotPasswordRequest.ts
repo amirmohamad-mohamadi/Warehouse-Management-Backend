@@ -1,10 +1,10 @@
-import { forgotPasswordSchema } from "@validators/auth/forgotPasswordSchema.js";
+import { forgotPasswordSchema } from "@validators/auth/forgotPasswordSchema";
 import type { Request, Response, NextFunction } from "express";
 
 export const validateForgotPasswordRequest = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const result = forgotPasswordSchema.safeParse(req.body);
 

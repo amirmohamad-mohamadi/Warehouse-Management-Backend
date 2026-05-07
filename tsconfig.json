@@ -7,11 +7,11 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
+    "module": "ESNext",
     "target": "esnext",
     // "allowJs": true,
     "esModuleInterop": true,
-    "moduleResolution": "nodenext",
+    "moduleResolution": "bundler",
     // For nodejs:
     "lib": ["esnext"],
     "types": ["node"],
@@ -25,18 +25,16 @@
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
-    "baseUrl": "./src",
     "paths": {
-      "@controllers/*": ["controllers/*"],
-      "@models/*": ["models/*"],
-      "@middlewares/*": ["middlewares/*"],
-      "@utils/*": ["utils/*"],
-      "@routes/*": ["routes/*"],
-      "@validators/*": ["validators/*"],
-      "@config/*": ["config/*"],
-      "@types/*": ["types/*"]
+      "@controllers/*": ["./src/controllers/*"],
+      "@models/*": ["./src/models/*"],
+      "@middlewares/*": ["./src/middlewares/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@validators/*": ["./src/validators/*"],
+      "@config/*": ["./src/config/*"],
+      "@types/*": ["./src/types/*"]
     },
-
     // Style Options
     // "noImplicitReturns": true,
     // "noImplicitOverride": true,

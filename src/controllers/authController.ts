@@ -1,9 +1,9 @@
 import { compare, hash } from "bcrypt";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
-import User from "@models/User.js";
-import config from "@config/config.js";
-import { sendResetEmail } from "@utils/mailer.js";
+import User from "@models/User";
+import config from "@config/config";
+import { sendResetEmail } from "@utils/mailer";
 import { Op } from "@sequelize/core";
 
 class AuthController {

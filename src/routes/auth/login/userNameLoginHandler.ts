@@ -1,7 +1,7 @@
-import AuthController from "@controllers/authController.js";
-import { setAuthCookie } from "@utils/cookies.js";
+import AuthController from "@controllers/authController";
+import { setAuthCookie } from "@utils/cookies";
 import { type Request, type Response } from "express";
-import { loginSchemaWithName } from "@validators/auth/loginSchema.js"; // اسکیمای مخصوصusername
+import { loginSchemaWithName } from "@validators/auth/loginSchema"; // اسکیمای مخصوصusername
 
 export const loginHandlerWithUserName = async (req: Request, res: Response) => {
   try {
@@ -19,7 +19,7 @@ export const loginHandlerWithUserName = async (req: Request, res: Response) => {
     // ✅ اگر ورودی معتبر بود، ادامه می‌دهیم
     const { accessToken, refreshToken, user } =
       await AuthController.loginWithUserName(
-        result.data // داده معتبر از اسکیمای username
+        result.data, // داده معتبر از اسکیمای username
       );
 
     // ست کردن کوکی

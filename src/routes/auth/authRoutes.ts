@@ -1,18 +1,18 @@
 import { Router } from "express";
-import { validateLoginRequest } from "@middlewares/auth/validateLoginRequest.js";
-import { loginHandler } from "./login/loginHandler.js";
-import { validateSignupRequest } from "@middlewares/auth/validateSignupRequest.js";
-import { signupHandler } from "./login/signupHandler.js";
-import { validateLoginWithNameRequest } from "@middlewares/auth/validateLoginWithNameRequest.js";
-import { loginHandlerWithUserName } from "./login/userNameLoginHandler.js";
-import { validateForgotPasswordRequest } from "@middlewares/auth/validateForgotPasswordRequest.js";
-import { forgotPasswordHandler } from "./login/forgotPasswordHandler.js";
-import { googleAuth, googleCallback } from "./login/googleAuth.js"; // جریان Gmail API
-import { validateResetPasswordRequest } from "@middlewares/auth/validateResetPasswordRequest.js";
-import { resetPasswordHandler } from "./login/resetPasswordHanlder.js";
+import { validateLoginRequest } from "@middlewares/auth/validateLoginRequest";
+import { loginHandler } from "./login/loginHandler";
+import { validateSignupRequest } from "@middlewares/auth/validateSignupRequest";
+import { signupHandler } from "./login/signupHandler";
+import { validateLoginWithNameRequest } from "@middlewares/auth/validateLoginWithNameRequest";
+import { loginHandlerWithUserName } from "./login/userNameLoginHandler";
+import { validateForgotPasswordRequest } from "@middlewares/auth/validateForgotPasswordRequest";
+import { forgotPasswordHandler } from "./login/forgotPasswordHandler";
+import { googleAuth, googleCallback } from "./login/googleAuth"; // جریان Gmail API
+import { validateResetPasswordRequest } from "@middlewares/auth/validateResetPasswordRequest";
+import { resetPasswordHandler } from "./login/resetPasswordHanlder";
 
 // 👉 اضافه کردن فایل جدید برای Login با Google
-import { googleLogin, googleLoginCallback } from "./login/googleLogin.js";
+import { googleLogin, googleLoginCallback } from "./login/googleLogin";
 
 const authRoutes = Router();
 
@@ -21,18 +21,18 @@ authRoutes.post("/signup", validateSignupRequest, signupHandler);
 authRoutes.post(
   "/username-login",
   validateLoginWithNameRequest,
-  loginHandlerWithUserName
+  loginHandlerWithUserName,
 );
 authRoutes.post(
   "/forgot-password",
   validateForgotPasswordRequest,
-  forgotPasswordHandler
+  forgotPasswordHandler,
 );
 
 authRoutes.post(
   "/reset-password",
   validateResetPasswordRequest,
-  resetPasswordHandler
+  resetPasswordHandler,
 );
 
 // جریان Gmail API (برای ارسال ایمیل)

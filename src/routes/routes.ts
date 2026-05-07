@@ -1,7 +1,7 @@
 // src/routes/index.ts
 import { Router } from "express";
-import authRoutes from "./auth/authRoutes.js";
-// import userRoutes from "./userRoutes.js"; ← در آینده اضافه می‌کنی
+import authRoutes from "./auth/authRoutes";
+// import userRoutes from "./userRoutes"; ← در آینده اضافه می‌کنی
 
 const router = Router();
 
