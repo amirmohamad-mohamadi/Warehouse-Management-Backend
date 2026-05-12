@@ -24,7 +24,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use("/api/v1/wms", router);
 
 (async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync();
   app.listen(3000, () => {
     console.log("Server is running on http://localhost:3000");
   });

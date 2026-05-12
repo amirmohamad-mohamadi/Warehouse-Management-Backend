@@ -1,5 +1,4 @@
 import type { NextFunction, Request, Response } from "express";
-import type { ResponseWithMethods } from "../types/globalTypes";
 
 // TODO: Simple response logger — can be extended to write to file or database
 function logResponse(
@@ -17,7 +16,7 @@ function logResponse(
 
 export default function responseMiddleware(
   req: Request,
-  res: ResponseWithMethods,
+  res: Response,
   next: NextFunction,
 ): void {
   if (!res.success) {
