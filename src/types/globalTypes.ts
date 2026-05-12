@@ -1,9 +1,10 @@
-import { type Response } from "express";
+import "express";
 
-// TYPE: Extended Response type — includes custom metadata, status codes, and optional debug info
-export interface ResponseWithMethods extends Response {
-  success: (message: string, data?: any) => Response;
-  fail: (message: string, statusCode?: number) => Response;
+declare module "express-serve-static-core" {
+  interface Response {
+    success(message: string, data?: any, statusCode?: number): this;
+    fail(message: string, statusCode?: number): this;
+  }
 }
 
 export type EnvType = "development" | "production" | "test";
